@@ -52,7 +52,7 @@ context master {
         TYPE_CODE: String(2);
         CATEGORY: String(32);
         //DESC_GUID: Association to prodtext;
-        DESC_GUID: localized String(255); // this will create new table to maintain the description of product
+        DESCRIPTION: localized String(255); // this will create new table to maintain the description of product
         SUPPLIER_GUID: Association to master.businesspartner;
         TAX_TARIF_CODE: Integer;
         MEASURE_UNIT: String(2);
@@ -66,7 +66,7 @@ context master {
         DIM_UNIT:String(2);
     }
 
-    entity employees: cuid, temporal {
+    entity employees: cuid, {
         nameFirst: String(40);
         nameMiddle: String(40);	
         nameLast: String(40);	
