@@ -1,4 +1,4 @@
-using { som.db } from '../db/datamodel';
+using { som.db, som.db.CDSViews } from '../db/datamodel';
 
 service CatalogService@(path:'/CatalogService') {
 
@@ -23,5 +23,12 @@ service CatalogService@(path:'/CatalogService') {
         PARENT_KEY: redirected to POs,
         PRODUCT_GUID: redirected to ProductSet
     }
+    
+
+    entity POWorklist as projection on CDSViews.POWorklist;
+    entity ProductOrders as projection on CDSViews.ProductViewSub;
+    entity ProductAggregation as projection on CDSViews.CProductValuesView excluding{
+        ProductId
+    };
 
 }
