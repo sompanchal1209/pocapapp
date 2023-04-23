@@ -80,7 +80,7 @@ annotate master.employees with {
 
 
 annotate transaction.purchaseorder with {
-        NODE_KEY @title : '{i18n>Node_KEy}';
+        //NODE_KEY @title : '{i18n>Node_KEy}';
         PO_ID @title : '{i18n>PO_ID}';
         PARTNER_GUID @title : '{i18n>PARTNER_GUID}';
         LIFECYCLE_STATUS @title : '{i18n>LIFECYCLE_STATUS}';
@@ -88,19 +88,19 @@ annotate transaction.purchaseorder with {
         Items @title : '{i18n>Items}';
         GROSS_AMOUNT @title: '{i18n>GROSS_AMOUNT}';
         NET_AMOUNT @title: '{i18n>NET_AMOUNT}';
-        CURRENCY_CODE @title: '{i18n>CURRENCY_CODE}';
+        //CURRENCY_CODE @title: '{i18n>CURRENCY_CODE}';
         TAX_AMOUNT @title: '{i18n>TAX_AMOUNT}';
 };
 
 
 annotate transaction.poitems with {
-        NODE_KEY @title : '{i18n>Node_KEy}';
+        //NODE_KEY @title : '{i18n>Node_KEy}';
         PARENT_KEY @title : '{i18n>PARENT_KEY}';
         PO_ITEM_POS @title : '{i18n>PO_ITEM_POS}';
         PRODUCT_GUID @title : '{i18n>PRODUCT_GUID}';
         GROSS_AMOUNT @title: '{i18n>GROSS_AMOUNT}';
         NET_AMOUNT @title: '{i18n>NET_AMOUNT}';
-        CURRENCY_CODE @title: '{i18n>CURRENCY_CODE}';
+        //CURRENCY_CODE @title: '{i18n>CURRENCY_CODE}';
         TAX_AMOUNT @title: '{i18n>TAX_AMOUNT}';
 };
 

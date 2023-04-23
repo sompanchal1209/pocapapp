@@ -4,12 +4,12 @@ using { som.common } from './common'; //user defined types
 using { cuid, managed, temporal, Currency } from '@sap/cds/common'; // Standard defined types
 
 
-//type Guid : String(32);
+type Guid : String(32);
 
 
 context master {
     entity businesspartner {
-        key NODE_KEY : common.Guid;
+        key NODE_KEY : Guid;
         BP_ROLE	:String(2);
         EMAIL_ADDRESS :String(105);
         PHONE_NUMBER: String(32);
@@ -27,7 +27,7 @@ context master {
 
 
     entity address {
-        key NODE_KEY: common.Guid;
+        key NODE_KEY: Guid;
         CITY: String(44);
         POSTAL_CODE: String(8);
         STREET: String(44);
@@ -40,14 +40,14 @@ context master {
         LONGITUDE: Decimal;
         businesspartner: Association to one businesspartner on businesspartner.ADDRESS_GUID = $self;
     }
-    // entity prodtext {
-    //     key NODE_KEY: common.Guid;
-    //     PARENT_KEY: common.Guid;
-    //     LANGUAGE:String(2);	
-    //     TEXT: String(256);        
-    // }
+    entity prodtext {
+        key NODE_KEY: Guid;
+        PARENT_KEY: Guid;
+        LANGUAGE:String(2);	
+        TEXT: String(256);        
+    }
     entity product {
-        key NODE_KEY: common.Guid;
+        key NODE_KEY: Guid;
         PRODUCT_ID: String(28);
         TYPE_CODE: String(2);
         CATEGORY: String(32);
