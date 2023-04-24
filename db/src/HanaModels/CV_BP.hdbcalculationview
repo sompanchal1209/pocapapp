@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_BP" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="true">
+<descriptions defaultDescription="cvtest"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="SOM_DB_MASTER_BUSINESSPARTNER">
+    <resourceUri>SOM_DB_MASTER_BUSINESSPARTNER</resourceUri>
+  </DataSource>
+  <DataSource id="SOM_DB_MASTER_ADDRESS">
+    <resourceUri>SOM_DB_MASTER_ADDRESS</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="BP_ADDR" cardinality="C1_1" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="NODE_KEY"/>
+      <viewAttribute id="BP_ROLE"/>
+      <viewAttribute id="BP_ID"/>
+      <viewAttribute id="COMPANY_NAME"/>
+      <viewAttribute id="CITY"/>
+      <viewAttribute id="STREET"/>
+      <viewAttribute hidden="true" id="JOIN$ADDRESS_GUID_NODE_KEY$NODE_KEY"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="SOM_DB_MASTER_BUSINESSPARTNER">
+      <mapping xsi:type="Calculation:AttributeMapping" target="NODE_KEY" source="NODE_KEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BP_ROLE" source="BP_ROLE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BP_ID" source="BP_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_NAME" source="COMPANY_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$ADDRESS_GUID_NODE_KEY$NODE_KEY" source="ADDRESS_GUID_NODE_KEY"/>
+    </input>
+    <input node="SOM_DB_MASTER_ADDRESS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CITY" source="CITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STREET" source="STREET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$ADDRESS_GUID_NODE_KEY$NODE_KEY" source="NODE_KEY"/>
+    </input>
+    <joinAttribute name="JOIN$ADDRESS_GUID_NODE_KEY$NODE_KEY"/>
+  </calculationView>
+</calculationViews>
+
+<logicalModel id="BP_ADDR">
+  <attributes>
+    <attribute id="NODE_KEY" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NODE_KEY"/>
+      <keyMapping columnObjectName="BP_ADDR" columnName="NODE_KEY"/>
+    </attribute>
+    <attribute id="BP_ROLE" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BP_ROLE"/>
+      <keyMapping columnObjectName="BP_ADDR" columnName="BP_ROLE"/>
+    </attribute>
+    <attribute id="BP_ID" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BP_ID"/>
+      <keyMapping columnObjectName="BP_ADDR" columnName="BP_ID"/>
+    </attribute>
+    <attribute id="COMPANY_NAME" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COMPANY_NAME"/>
+      <keyMapping columnObjectName="BP_ADDR" columnName="COMPANY_NAME"/>
+    </attribute>
+    <attribute id="CITY" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CITY"/>
+      <keyMapping columnObjectName="BP_ADDR" columnName="CITY"/>
+    </attribute>
+    <attribute id="STREET" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="STREET"/>
+      <keyMapping columnObjectName="BP_ADDR" columnName="STREET"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="100" y="105"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+    
+  
+    <shape expanded="true" modelObjectName="BP_ADDR" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="81" y="186"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="SOM_DB_MASTER_BUSINESSPARTNER" modelObjectNameSpace="BP_ADDR" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="297"/>
+    </shape>
+    <shape modelObjectName="SOM_DB_MASTER_ADDRESS" modelObjectNameSpace="BP_ADDR" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="422" y="14"/>
+      <rectangleSize width="238"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

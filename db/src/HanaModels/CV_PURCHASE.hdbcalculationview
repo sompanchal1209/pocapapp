@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_PURCHASE" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" hierarchyGeneration="SQL" cacheInvalidationPeriod="NONE" enforceSqlExecution="true">
+<descriptions defaultDescription="CV_PURCHASE"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="CV_BP">
+    <resourceUri>CV_BP</resourceUri>
+  </DataSource>
+  <DataSource id="CV_PO">
+    <resourceUri>CV_PO</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="C1_1" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="NODE_KEY"/>
+      <viewAttribute id="BP_ROLE"/>
+      <viewAttribute id="BP_ID"/>
+      <viewAttribute id="COMPANY_NAME"/>
+      <viewAttribute id="CITY"/>
+      <viewAttribute id="STREET"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="PARTNER_GUID_NODE_KEY"/>
+      <viewAttribute id="OVERALL_STATUS"/>
+      <viewAttribute id="CURRENCY_CODE"/>
+      <viewAttribute id="GROSS_AMOUNT" aggregationType="sum"/>
+      <viewAttribute id="NET_AMOUNT" aggregationType="sum"/>
+      <viewAttribute id="TAX_AMOUNT" aggregationType="sum"/>
+      <viewAttribute id="PO_ITEM_POS" aggregationType="sum"/>
+      <viewAttribute id="PO_ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="CV_BP">
+      <mapping xsi:type="Calculation:AttributeMapping" target="NODE_KEY" source="NODE_KEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BP_ROLE" source="BP_ROLE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BP_ID" source="BP_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_NAME" source="COMPANY_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CITY" source="CITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STREET" source="STREET"/>
+    </input>
+    <input node="CV_PO">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER_GUID_NODE_KEY" source="PARTNER_GUID_NODE_KEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OVERALL_STATUS" source="OVERALL_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CURRENCY_CODE" source="CURRENCY_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GROSS_AMOUNT" source="GROSS_AMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NET_AMOUNT" source="NET_AMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TAX_AMOUNT" source="TAX_AMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PO_ITEM_POS" source="PO_ITEM_POS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PO_ID" source="PO_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NODE_KEY" source="PARTNER_GUID_NODE_KEY"/>
+    </input>
+    <joinAttribute name="NODE_KEY"/>
+  </calculationView>
+</calculationViews>
+
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="NODE_KEY" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NODE_KEY"/>
+      <keyMapping columnObjectName="Join_1" columnName="NODE_KEY"/>
+    </attribute>
+    <attribute id="BP_ROLE" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BP_ROLE"/>
+      <keyMapping columnObjectName="Join_1" columnName="BP_ROLE"/>
+    </attribute>
+    <attribute id="BP_ID" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BP_ID"/>
+      <keyMapping columnObjectName="Join_1" columnName="BP_ID"/>
+    </attribute>
+    <attribute id="COMPANY_NAME" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COMPANY_NAME"/>
+      <keyMapping columnObjectName="Join_1" columnName="COMPANY_NAME"/>
+    </attribute>
+    <attribute id="CITY" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CITY"/>
+      <keyMapping columnObjectName="Join_1" columnName="CITY"/>
+    </attribute>
+    <attribute id="STREET" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="STREET"/>
+      <keyMapping columnObjectName="Join_1" columnName="STREET"/>
+    </attribute>
+    <attribute id="ID" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ID"/>
+      <keyMapping columnObjectName="Join_1" columnName="ID"/>
+    </attribute>
+    <attribute id="PARTNER_GUID_NODE_KEY" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PARTNER_GUID_NODE_KEY"/>
+      <keyMapping columnObjectName="Join_1" columnName="PARTNER_GUID_NODE_KEY"/>
+    </attribute>
+    <attribute id="OVERALL_STATUS" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OVERALL_STATUS"/>
+      <keyMapping columnObjectName="Join_1" columnName="OVERALL_STATUS"/>
+    </attribute>
+    <attribute id="CURRENCY_CODE" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CURRENCY_CODE"/>
+      <keyMapping columnObjectName="Join_1" columnName="CURRENCY_CODE"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="GROSS_AMOUNT" order="11" aggregationType="sum" measureType="simple" restrictionExpressionLanguage="SQL">
+      <descriptions defaultDescription="GROSS_AMOUNT"/>
+      <measureMapping columnObjectName="Join_1" columnName="GROSS_AMOUNT"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+    <measure id="NET_AMOUNT" order="12" aggregationType="sum" measureType="simple" restrictionExpressionLanguage="SQL">
+      <descriptions defaultDescription="NET_AMOUNT"/>
+      <measureMapping columnObjectName="Join_1" columnName="NET_AMOUNT"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+    <measure id="TAX_AMOUNT" order="13" aggregationType="sum" measureType="simple" restrictionExpressionLanguage="SQL">
+      <descriptions defaultDescription="TAX_AMOUNT"/>
+      <measureMapping columnObjectName="Join_1" columnName="TAX_AMOUNT"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+    <measure id="PO_ITEM_POS" order="14" aggregationType="sum" measureType="simple" restrictionExpressionLanguage="SQL">
+      <descriptions defaultDescription="PO_ITEM_POS"/>
+      <measureMapping columnObjectName="Join_1" columnName="PO_ITEM_POS"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+    <measure id="PO_ID" order="15" aggregationType="sum" measureType="simple" restrictionExpressionLanguage="SQL">
+      <descriptions defaultDescription="PO_ID"/>
+      <measureMapping columnObjectName="Join_1" columnName="PO_ID"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+  <sharedDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+    
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="126" y="186"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="CV_BP" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="12" y="10"/>
+      <rectangleSize width="178.69970703125"/>
+    </shape>
+    <shape modelObjectName="CV_PO" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="237.19091796875"/>
+    </shape>
+    <shape modelObjectName="Join_1" modelObjectNameSpace="StarJoinViewNodeInput" modelObjectType="repository">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
