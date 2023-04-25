@@ -1,4 +1,4 @@
-namespace som.db;
+//namespace som.db; commenting and putting as context at line no 9. This is required in order to expose Calculation View
 
 using { som.common } from './common'; //user defined types
 using { cuid, managed, temporal, Currency } from '@sap/cds/common'; // Standard defined types
@@ -6,7 +6,7 @@ using { cuid, managed, temporal, Currency } from '@sap/cds/common'; // Standard 
 
 type Guid : String(32);
 
-
+context som.db{
 context master {
     entity businesspartner {
         key NODE_KEY : Guid;
@@ -204,4 +204,24 @@ context CDSViews {
         }
         group by ProductId,Country,PO_ORDERS.CurrencyCode
 
+}
+}
+@cds.persistence.exists 
+@cds.persistence.calcview 
+Entity CV_PURCHASE {
+key     NODE_KEY: String(32)  @title: 'NODE_KEY: NODE_KEY' ; 
+key     BP_ROLE: String(2)  @title: 'BP_ROLE: BP_ROLE' ; 
+key     BP_ID: String(32)  @title: 'BP_ID: BP_ID' ; 
+key     COMPANY_NAME: String(250)  @title: 'COMPANY_NAME: COMPANY_NAME' ; 
+key     CITY: String(44)  @title: 'CITY: CITY' ; 
+key     STREET: String(44)  @title: 'STREET: STREET' ; 
+key     ID: String(36)  @title: 'ID: ID' ; 
+key     PARTNER_GUID_NODE_KEY: String(32)  @title: 'PARTNER_GUID_NODE_KEY: PARTNER_GUID_NODE_KEY' ; 
+key     OVERALL_STATUS: String(1)  @title: 'OVERALL_STATUS: OVERALL_STATUS' ; 
+key     CURRENCY_CODE: String(3)  @title: 'CURRENCY_CODE: CURRENCY_CODE' ; 
+        GROSS_AMOUNT: Decimal(15)  @title: 'GROSS_AMOUNT: GROSS_AMOUNT' ; 
+        NET_AMOUNT: Decimal(15)  @title: 'NET_AMOUNT: NET_AMOUNT' ; 
+        TAX_AMOUNT: Decimal(15)  @title: 'TAX_AMOUNT: TAX_AMOUNT' ; 
+        PO_ITEM_POS: Integer  @title: 'PO_ITEM_POS: PO_ITEM_POS' ; 
+        PO_ID: Integer  @title: 'PO_ID: PO_ID' ; 
 }

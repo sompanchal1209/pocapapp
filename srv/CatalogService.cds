@@ -1,4 +1,4 @@
-using { som.db, som.db.CDSViews } from '../db/datamodel';
+using { som.db, som.db.CDSViews, CV_PURCHASE} from '../db/datamodel';
 
 service CatalogService@(path:'/CatalogService') {
 
@@ -9,6 +9,8 @@ service CatalogService@(path:'/CatalogService') {
     entity ProductSet as projection on db.master.product;
 
     entity BPSet as projection on db.master.businesspartner;
+
+    entity PurchaseOrdersCV as projection on CV_PURCHASE;
 
     entity POs @(
         title: '{i18n>poHeader}'
@@ -31,4 +33,8 @@ service CatalogService@(path:'/CatalogService') {
         ProductId
     };
 
+    
+
 }
+
+
