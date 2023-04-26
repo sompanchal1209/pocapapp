@@ -1,0 +1,21 @@
+PROCEDURE "get_master_data"( out ex_emp_exists boolean,
+out ex_employees "SOM_DB_MASTER_EMPLOYEES" ,
+out ex_emp_count int,
+out ex_business_partners "SOM_DB_MASTER_BUSINESSPARTNER",
+out ex_bp_count int
+)
+LANGUAGE SQLSCRIPT
+SQL SECURITY INVOKER
+--DEFAULT SCHEMA <default_schema_name>
+AS
+BEGIN
+
+ex_emp_exists  = "masterdata":"employee_exists"('NICOLSJ');   
+
+call "masterdata":"get_employee_data"( ex_employees );
+ex_emp_count = "masterdata":rowcount;
+
+call "masterdata":"get_business_partner_data"( ex_business_partners );
+ex_bp_count = "masterdata":rowcount;
+
+END
