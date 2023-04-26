@@ -1,0 +1,14 @@
+PROCEDURE "sleep"( )
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+   READS SQL DATA AS
+BEGIN
+
+    USING SQLSCRIPT_SYNC as SyncLib;  --Need to google what this libraries does
+   /*************************************
+       Write your procedure logic
+   *************************************/
+CALL SyncLib:sleep_seconds(10);
+
+END

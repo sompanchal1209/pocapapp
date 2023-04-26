@@ -1,0 +1,24 @@
+PROCEDURE "get_po_header_data"( )
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+   READS SQL DATA AS
+BEGIN
+   /*************************************
+       Write your procedure logic
+   *************************************/
+
+   SELECT COUNT(*) AS CREATE_CNT, "CREATEDBY"
+     FROM "SOM_DB_TRANSACTION_PURCHASEORDER" WHERE ID IN (
+                     SELECT "PARENT_KEY_ID"
+                          FROM "SOM_DB_TRANSACTION_POITEMS"
+          WHERE "PRODUCT_GUID_NODE_KEY" IS NOT NULL)
+            GROUP BY  "CREATEDBY";
+
+SELECT COUNT(*) AS CHANGE_CNT, "MODIFIEDBY"
+     FROM "SOM_DB_TRANSACTION_PURCHASEORDER"  WHERE ID IN (
+                     SELECT "PARENT_KEY_ID"
+                          FROM "SOM_DB_TRANSACTION_POITEMS"
+          WHERE "PRODUCT_GUID_NODE_KEY" IS NOT NULL)
+             GROUP BY  "MODIFIEDBY";
+END

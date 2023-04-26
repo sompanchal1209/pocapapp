@@ -12,6 +12,8 @@ service CatalogService@(path:'/CatalogService') {
 
     entity PurchaseOrdersCV as projection on CV_PURCHASE;
 
+    function sleep() returns Boolean;
+
     entity POs @(
         title: '{i18n>poHeader}'
     ) as projection on db.transaction.purchaseorder{
