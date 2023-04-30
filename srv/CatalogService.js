@@ -18,7 +18,18 @@ module.exports = cds.service.impl(
             }
 
         });
+
+        const { EmployeeSet } = this.entities;
+        this.before('UPDATE',EmployeeSet, (req,res) => {
+            console.log("Kya aya", req.data.salaryAmount);
+        if(parseFloat(req.data.salaryAmount) >= 1000000){
+            req.error(500,"bhai thikse daal salary");
+        }
+        })
     }
+    
+
+
 )
 
 

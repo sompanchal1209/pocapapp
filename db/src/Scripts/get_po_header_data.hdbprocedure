@@ -30,8 +30,8 @@ BEGIN
     EX_TOP_3_EMP_PO_COMBINED_CNT =
         SELECT emp.LOGINNAME, crcnt.CREATE_CNT, chcnt.CHANGE_CNT,  crcnt.CREATE_CNT +
         chcnt.CHANGE_CNT AS COMBINED_CNT,
-        NAMEFIRST as FULLNAME
-        ----"get_full_name"( "NAMEFIRST", "NAMEMIDDLE", "NAMELAST") as FULLNAME
+        --NAMEFIRST as FULLNAME,
+        "get_full_name"( "NAMEFIRST", "NAMEMIDDLE", "NAMELAST","ID") as FULLNAME
             FROM "SOM_DB_MASTER_EMPLOYEES" as emp
             LEFT OUTER JOIN :EX_PO_CREATE_CNT AS crcnt
              ON emp.ID = crcnt.EID

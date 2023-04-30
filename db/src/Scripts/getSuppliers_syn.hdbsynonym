@@ -1,0 +1,7 @@
+{
+  "getSuppliers_syn": {
+    "target": {
+      "object": "getSuppliers"
+    }
+  }
+}
